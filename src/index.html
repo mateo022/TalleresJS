@@ -1,12 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>webpack starterkit</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalleresJS</title>
 </head>
+
 <body>
-  <h1>webpack starter</h1>
-  <p>✨ A lightweight foundation for your next webpack based frontend project.</p>
+    <div class="container">
+
+        <div class="my-card card">
+            <div class="card-body">
+                <div class="form-inline">
+                    <label for=""> Numero 1</label>
+                    <input type="text" class="form-control" id="numberOne">
+                </div>
+                <div class="form-inline">
+                    <label for=""> Numero 2</label>
+                    <input type="text" class="form-control" id="numberTwo">
+                </div>
+                <div class="form-inline">
+                    <button class="btn btn-primary" onclick="calculate()">Calcular</button>
+                </div>
+                <div>
+                    <span>Resultado : </span>
+                    <h5 id="result" class=""> ------- </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ejercicio2">
+        <div class="container">
+            <div class="my-card card">
+                <div class="card-body">
+                    <div class="form-inline">
+                        <label for="">Edad de la persona</label>
+                        <input type="text" class="form-control" id="Edad">
+                        <div class="inline-table my-btn">
+                            <button class="btn btn-dark" onclick="main()">Calcular  Edad</button>
+                        </div>
+                        <div>
+                            <h5 id="result"></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </body>
+
 </html>
+<script>
+    const inputNumberOne = document.getElementById("numberOne");
+    const inputNumberTwo = document.getElementById("numberTwo");
+    const h5Result = document.getElementById("result");
+
+    function calculate() {
+        const n1 = parseInt(inputNumberOne.value);
+        const n2 = parseInt(inputNumberTwo.value);
+        if (hasDataAnError(n1, n2)) {
+            onError();
+            return;
+        }
+        onSuccess(n1, n2);
+    }
+
+    function hasDataAnError(n1, n2) {
+        return !n1 || !n2;
+    }
+
+    function onError() {
+        h5Result.innerHTML = "ingrese datos validos";
+        h5Result.classList.add("text-danger");
+    }
+
+    function onSuccess(n1, n2) {
+        h5Result.innerHTML = add(n1, n2);
+        h5Result.classList.remove("text-danger");
+    }
+
+    function add(n1, n2) {
+        return n1 + n2;
+    }
+    /*Ejercicio 2 edades*/
+    const edad = document.getElementById("Edad");
+    const message = document.getElementById("result");
+
+    function main() {
+
+        const age = parseInt(edad.value);
+
+        if (!age) {
+            error();
+        } else {
+            evaluate(age);
+        }
+    }
+
+    function error() {
+
+        message.innerHTML = "Ingrese datos validos";
+        message.classList.add("text-danger");
+    }
+
+    function evaluate(edad) {
+
+        if (edad < 18) {
+            menor(edad);
+        } else {
+            mayor(edad);
+        }
+    }
+
+    function mayor(edad) {
+        message.classList.remove("text-danger");
+        message.innerHTML = ` ${edad},  años es mayor de edad`;
+        message.classList.add("text-success");
+    }
+
+    function menor(edad) {
+        message.classList.remove("text-danger");
+        message.innerHTML = ` ${edad}, años es menor de edad`;
+        message.classList.add("text-info");
+
+    }
+</script>

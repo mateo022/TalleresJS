@@ -1,3 +1,2 @@
-import '../styles/index.scss';
-
-console.log('webpack starterkit');
+import '../styles/home.scss';
+import 'bootstrap';
