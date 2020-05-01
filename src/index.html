@@ -11,6 +11,7 @@
     <div class="container">
 
         <div class="my-card card">
+            <label for="">Ejercicio 1</label>
             <div class="card-body">
                 <div class="form-inline">
                     <label for=""> Numero 1</label>
@@ -25,7 +26,7 @@
                 </div>
                 <div>
                     <span>Resultado : </span>
-                    <h5 id="result" class=""> ------- </h5>
+                    <h5 id="resultado" class=""> ------- </h5>
                 </div>
             </div>
         </div>
@@ -34,6 +35,7 @@
     <div class="ejercicio2">
         <div class="container">
             <div class="my-card card">
+                <label for="">Ejercicio 2</label>
                 <div class="card-body">
                     <div class="form-inline">
                         <label for="">Edad de la persona</label>
@@ -42,8 +44,26 @@
                             <button class="btn btn-dark" onclick="main()">Calcular  Edad</button>
                         </div>
                         <div>
-                            <h5 id="result"></h5>
+                            <h5 id="ejer2"> -------</h5>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ejercicio3">
+        <div class="my-card card">
+            <label for="">Ejercicio 3</label>
+            <div class="card-body">
+                <div class="form-inline">
+                    <label for=""> Numero</label>
+                    <input type="text" class="form-control" id="number">
+                    <div class="form-inline">
+                        <button class="btn btn-primary" onclick="show()">Operacion</button>
+                    </div>
+                    <div>
+                        <span>Resultado : </span>
+                        <h5 id="ejer3" class=""> ------- </h5>
                     </div>
                 </div>
             </div>
@@ -57,7 +77,7 @@
 <script>
     const inputNumberOne = document.getElementById("numberOne");
     const inputNumberTwo = document.getElementById("numberTwo");
-    const h5Result = document.getElementById("result");
+    const h5Result = document.getElementById("resultado");
 
     function calculate() {
         const n1 = parseInt(inputNumberOne.value);
@@ -88,7 +108,7 @@
     }
     /*Ejercicio 2 edades*/
     const edad = document.getElementById("Edad");
-    const message = document.getElementById("result");
+    const message = document.getElementById("ejer2");
 
     function main() {
 
@@ -126,6 +146,37 @@
         message.classList.remove("text-danger");
         message.innerHTML = ` ${edad}, años es menor de edad`;
         message.classList.add("text-info");
+
+    }
+    /*Ejercicio 3 , impares y pares*/
+
+    const par = document.getElementById("number");
+    const resultado = document.getElementById("ejer3");
+
+    function show() {
+        const n = parseInt(par.value);
+        if (!n) {
+            ejer3.innerHTML = `ingrese un dato valido`;
+        } else {
+            operation(n);
+        }
+    }
+
+    function operation(n) {
+
+        if (n % 2) {
+            impar(n)
+        } else {
+            par1(n);
+        }
+    }
+
+    function par1(n) {
+        ejer3.innerHTML = `El numero ${n} es par`;
+    }
+
+    function impar(n) {
+        ejer3.innerHTML = `El numero ${n} es impar`;
 
     }
 </script>
